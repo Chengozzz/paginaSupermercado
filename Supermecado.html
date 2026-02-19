@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti - Supermercado</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2c3e50; /* Fondo oscuro elegante para resaltar el ticket */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'VT323', monospace;
+            overflow: hidden; /* Evita scroll en la página general */
+        }
+
+        .ticket-container {
+            background-color: #fdfbf7; /* Color papel recibo */
+            width: 320px; /* Ancho fijo del ticket */
+            height: 80vh; /* Altura fija (80% de la pantalla) */
+            padding: 20px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.5); /* Sombra para dar profundidad */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            
+            /* Efecto de borde dentado arriba y abajo (papel cortado) */
+            --mask: conic-gradient(from -45deg at bottom,#0000,#000 1deg 90deg,#0000 91deg) 50% / 20px 100%;
+            -webkit-mask: var(--mask);
+            mask: var(--mask);
+        }
+
+        /* Cabecera del ticket (fija) */
+        header {
+            text-align: center;
+            border-bottom: 2px dashed #333;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            flex-shrink: 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-top: 5px;
+            color: #555;
+        }
+
+        /* Contenedor de la letra (scrolleable) */
+        .receipt-content {
+            flex-grow: 1; /* Ocupa el espacio restante */
+            overflow-y: auto; /* PERMITE SCROLL INTERNO */
+            padding-right: 10px; /* Espacio para el scrollbar */
+            font-size: 18px;
+            line-height: 1.4;
+            color: #222;
+            text-align: left; /* Alineado a la izquierda como lista de compras */
+        }
+
+        /* Estilización de la barra de scroll para que se vea bonita */
+        .receipt-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .receipt-content::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .receipt-content::-webkit-scrollbar-thumb {
+            background: #bbb; 
+            border-radius: 3px;
+        }
+        .receipt-content::-webkit-scrollbar-thumb:hover {
+            background: #888; 
+        }
+
+        .verse {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .verse span:last-child {
+            font-weight: bold; /* Simula el precio */
+            margin-left: 10px;
+        }
+
+        /* Pie del ticket (fijo al final) */
+        footer {
+            border-top: 2px dashed #333;
+            padding-top: 10px;
+            margin-top: 10px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .barcode {
+            height: 30px;
+            background: repeating-linear-gradient(90deg,#000,#000 2px,#fff 2px,#fff 4px);
+            width: 80%;
+            margin: 10px auto;
+            opacity: 0.8;
+        }
+
+        .love-note {
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        
+        /* Pequeño corazón rojo al estilo Mon Laferte */
+        .heart {
+            color: #d63031;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticket-container">
+        <header>
+            <h1>MON LAFERTE</h1>
+            <div class="meta">
+                <span>LOCAL: De memo</span>
+                <span>FECHA: Para paty</span>
+            </div>
+        </header>
+
+        <div class="receipt-content">
+            <p>Pasillo dos, me invita a comprar<br>Cosas que no hacen falta</p>
+            <p>Y el alivio comercial<br>La risa falsa</p>
+            <p>Y es que ya nada es igual<br>Me esquiva la mirada</p>
+            <p>¿Será que estamos mal<br>O indefensos?</p>
+            
+            <p>------------------</p>
+
+            <p>Pasillo dos, descansa un animal<br>Un pasajero</p>
+            <p>El invitado se queda a cenar<br>Pero no quiero</p>
+            <p>Y es que ya no me sabe igual<br>Me esquiva la mirada</p>
+            <p>¿Será que estamos mal<br>Y somos indefensos?</p>
+
+            <p>------------------</p>
+
+            <p>Qué inseguridad<br>¿Será que el miedo nos ha entrenado?</p>
+            <p>Y qué inestabilidad<br>¿Será que nos encontramos<br>En la oscuridad?</p>
+            <p>Y las armas<br>Debemos guardarlas, qué facilidad<br>De palabras<br>En el supermercado</p>
+
+            <p>------------------</p>
+
+            <p>La novedad camina su final<br>Comienza el duelo</p>
+            <p>El crédito no alcanza para más<br>Es prisionero</p>
+            <p>Y es que ya nada es igual<br>Me esquiva la mirada</p>
+            <p>¿Será que estamos mal<br>Y somos indefensos?</p>
+
+            <p>------------------</p>
+
+            <p>Qué inseguridad<br>¿Será que el miedo nos ha entrenado?</p>
+            <p>Y qué inestabilidad<br>¿Será que nos encontramos<br>En la oscuridad?</p>
+            <p>Y las armas<br>Debemos guardarlas? Qué facilidad<br>De palabras<br>En el supermercado</p>
+
+            <p>------------------</p>
+
+            <p>Y todo va a pasar<br>Hoy es un día raro</p>
+            <p>Cadena nacional<br>Nos vamos de paro cardiaco</p>
+
+            <p>------------------</p>
+
+            <p>Qué inseguridad<br>¿Será que el miedo nos ha entrenado?</p>
+            <p>Y qué inestabilidad<br>¿Será que nos encontramos<br>En la oscuridad?</p>
+            <p>Y las armas<br>Debemos guardarlas, qué facilidad<br>De palabras<br>En el supermercado</p>
+            
+            <br>
+            <p style="text-align: center; font-style: italic;">*** FIN DEL TICKET ***</p>
+            <br>
+        </div>
+
+        <footer>
+            <div class="total-row">
+                <span>TOTAL:</span>
+                <span class="heart">Te quiero mensa</span>
+            </div>
+            <div class="barcode"></div>
+            <div class="love-note">Gracias por tu compra</div>
+        </footer>
+    </div>
+
+</body>
+</html>
